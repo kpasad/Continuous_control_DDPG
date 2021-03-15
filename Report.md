@@ -45,7 +45,8 @@ Run the file Navigation.py. The simulation will terminate when one of the two co
 The score trajectory over the episodes for the succesful agent is shown below.
 ![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/final_scores.jpeg)
 
-Succesful learning is defined as an average score of 30 over 100 episodes. The agent learns after about 400 episodes. The scores improve until episode 500 and then vaccilate around a reducing average.
+Succesful learning is defined as an average score of 30 over 100 episodes. For an OU noise variance of 0.07 agent learns after about 400 episodes. The scores improve until episode 500 and then vaccilate around a reducing average.
+
 The learnt pytorch check point for the local networks are available in the checkpoint directory. 
 
 DDPG is notoriously difficult to train. The networks learn in successfully in a very narrow range of hyperparameter.
@@ -55,7 +56,9 @@ DDPG is notoriously difficult to train. The networks learn in successfully in a 
 dx = self.theta * (self.mu - x) + self.sigma * np.array([np.random.standard_normal() for i in range(len(x))]) 
 
 The variance of the distribution dictates the amount of exploration that the agent performs. The agent is very sensitive to the the variance. See below:
- ![Scores for sweep of variance of OU noise](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/results.jpeg)
+ ![Scores for sweep of variance of OU noise](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/OU_noise_sweep.png)
+For the noise variance of 0.08 and 0.1, the agent learns approximately identically until  about 250 episodes. Noise variance of 0.1 outperforms variance of 0.08. It could be hypothesised that a slight nudge during exploration led the 
+the agent to learn at a highly rewarding behaviour.  
 
 Learning rate :
 We sweep the learning rate for both Actor and Critic. Both are kept identical, and swept together.
