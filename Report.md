@@ -39,7 +39,7 @@ The critic networks are:
 The critic network concatenates the action estimated by the critic network with a feature representation of the state instead of concatenating directly with the state. Critic learns faster on the feature representation instead of the raw state.
 
 ## Running the simulation
-Run the file Navigation.py. The simulation will terminate when one of the two condition is met: The agent gets a score of 13 or the predetermined number of episodes elapse. At the end of simulation, a pickle file is generated. The file contains a dump of parameters as the raw scores. The scores can be analyzed to create the plot below using the utility script plotres.py. The network weights are checkpointed as well.
+Run the file continuous_control.py. The simulation will terminate when the agent gets a score of 30 over 100 episodes At the end of simulation, a pickle file is generated. The file contains a dump of parameters as the raw scores. The scores can be analyzed to create the plot below using the utility script plotres.py. The network weights are checkpointed as well.
 
 ## Performance
 The score trajectory over the episodes for the succesful agent is shown below.
