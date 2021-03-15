@@ -43,7 +43,7 @@ Run the file Navigation.py. The simulation will terminate when one of the two co
 
 ## Performance
 The score trajectory over the episodes for the succesful agent is shown below.
-![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/final_scores.jpeg)
+![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/final_scores.jpeg)
 
 Succesful learning is defined as an average score of 30 over 100 episodes. For an OU noise variance of 0.07 agent learns after about 400 episodes. The scores improve until episode 500 and then vaccilate around a reducing average.
 
@@ -62,16 +62,16 @@ the agent to learn at a highly rewarding behaviour.
 
 Learning rate :
 We sweep the learning rate for both Actor and Critic. Both are kept identical, and swept together.
-![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/scores.jpeg)
+![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/scores.jpeg)
 
 The agent learns for a very narrow range of learning rates.
 
 Actor and Critic Loss:
 During the initial stage of agent development, the agent is not able to learn. To try to understand, why the agent does not learn, can we analyze the Actor and Critic loss?
 Below are plots for Actor and Critic Loss. For reference, the scores are shown about.
-![Actor Loss](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/actor_loss.jpeg)
+![Actor Loss](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/actor_loss.jpeg)
 
-![Critic Loss](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/critic_loss.jpeg)
+![Critic Loss](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/critic_loss.jpeg)
 
  The actor 'loss' is  the average reward and the actor learns to maximize it. The Actor loss is a Mean square loss, we expect it to reduce as the agent learns. In the plot below we see, that as the agent learns (score increases) the critic loss increases. The actor loss, however, also increases. The reason is that the MSE is calculated against a moving target created by the actor. So, the critic loss is not really a meaningful metric. Even if the actor loss behaves as expected, the actor loss is not meaningful either.
 
