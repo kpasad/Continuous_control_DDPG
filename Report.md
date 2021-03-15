@@ -76,4 +76,3 @@ Some suggestions:
 1. Annealing the OU noise to automate the exploration-exploitation.
 2. Using a very small network to limit the variance in score.
 3. Trying multi-agent set up to reduce sensitivity to parameters.
-4. 
