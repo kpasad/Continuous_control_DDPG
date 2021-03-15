@@ -47,13 +47,8 @@ The score trajectory over the episodes for the succesful agent is shown below.
 
 Succesful learning is defined as an average score of 30 over 100 episodes. For an OU noise variance of 0.07 agent learns after about 400 episodes. The scores improve until episode 500 and then vaccilate around a reducing average.
 
-The learnt pytorch check point for the local networks are available in the checkpoint directory. 
-
-DDPG is notoriously difficult to train. The networks learn in successfully in a very narrow range of hyperparameter.
-1. Exploration model: The action determined by Action network is perturbed by the Ornstein–Uhlenbeck noise. Training the networks required change to the noise model, to change from uniform random to normal distribution
-
-### Sensitivity to Ornstein–Uhlenbeck noise
-The variance of the distribution dictates the amount of exploration that the agent performs. The agent is very sensitive to the the variance. See below:
+### Sensitivity to Exploration model (Ornstein–Uhlenbeck noise):
+The action determined by Action network is perturbed by the Ornstein–Uhlenbeck noise. Training the networks required change to the noise model, to change from uniform random to normal distribution. The variance of the distribution dictates the amount of exploration that the agent performs. The agent is very sensitive to the the variance. See below:
 
  ![Scores for sweep of variance of OU noise](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/OU_noise_sweep.jpeg)
  
