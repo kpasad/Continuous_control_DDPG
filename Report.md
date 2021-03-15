@@ -52,21 +52,21 @@ The learnt pytorch check point for the local networks are available in the check
 DDPG is notoriously difficult to train. The networks learn in successfully in a very narrow range of hyperparameter.
 1. Exploration model: The action determined by Action network is perturbed by the Ornstein–Uhlenbeck noise. Training the networks required change to the noise model, to change from uniform random to normal distribution
 
-#dx = self.theta * (self.mu - x) + self.sigma * np.array([random.random() for i in range(len(x))])  
-dx = self.theta * (self.mu - x) + self.sigma * np.array([np.random.standard_normal() for i in range(len(x))]) 
-
+### Sensitivity to Ornstein–Uhlenbeck noise
 The variance of the distribution dictates the amount of exploration that the agent performs. The agent is very sensitive to the the variance. See below:
+
  ![Scores for sweep of variance of OU noise](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/OU_noise_sweep.jpeg)
+ 
 For the noise variance of 0.08 and 0.1, the agent learns approximately identically until  about 250 episodes. Noise variance of 0.1 outperforms variance of 0.08. It could be hypothesised that a slight nudge during exploration led the 
 the agent to learn at a highly rewarding behaviour.  
 
-Learning rate :
+### Sensitivity to Learning rate :
 We sweep the learning rate for both Actor and Critic. Both are kept identical, and swept together.
 ![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/scores.jpeg)
 
-The agent learns for a very narrow range of learning rates.
+Notice that the agent learns for a very narrow range of learning rates.
 
-Actor and Critic Loss:
+### Actor and Critic Loss:
 During the initial stage of agent development, the agent is not able to learn. To try to understand, why the agent does not learn, can we analyze the Actor and Critic loss?
 Below are plots for Actor and Critic Loss. For reference, the scores are shown about.
 ![Actor Loss](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/actor_loss.jpeg)
@@ -76,4 +76,9 @@ Below are plots for Actor and Critic Loss. For reference, the scores are shown a
  The actor 'loss' is  the average reward and the actor learns to maximize it. The Actor loss is a Mean square loss, we expect it to reduce as the agent learns. In the plot below we see, that as the agent learns (score increases) the critic loss increases. The actor loss, however, also increases. The reason is that the MSE is calculated against a moving target created by the actor. So, the critic loss is not really a meaningful metric. Even if the actor loss behaves as expected, the actor loss is not meaningful either.
 
 ## Conclusion
-After a hyper parameter sweep, the DDPG agent learns and the scores reach the target. One recommendation, is that the OU variance can be annealed.
+While the DDPG model is straigh forward it is very sensitive to hyperparameters.After a hyper parameter sweep, the DDPG agent learns and the scores reach the target.  Strating with a smaller network is advisable.
+Some suggestions:
+1. Annealing the OU noise to automate the exploration-exploitation.
+2. Using a very small network to limit the variance in score.
+3. Trying multi-agent set up to reduce sensitivity to parameters.
+4. 
