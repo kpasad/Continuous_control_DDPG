@@ -56,7 +56,7 @@ DDPG is notoriously difficult to train. The networks learn in successfully in a 
 dx = self.theta * (self.mu - x) + self.sigma * np.array([np.random.standard_normal() for i in range(len(x))]) 
 
 The variance of the distribution dictates the amount of exploration that the agent performs. The agent is very sensitive to the the variance. See below:
- ![Scores for sweep of variance of OU noise](https://github.com/kpasad/Continuous_control_DDPG/blob/main/results/OU_noise_sweep.png)
+ ![Scores for sweep of variance of OU noise](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/OU_noise_sweep.jpeg)
 For the noise variance of 0.08 and 0.1, the agent learns approximately identically until  about 250 episodes. Noise variance of 0.1 outperforms variance of 0.08. It could be hypothesised that a slight nudge during exploration led the 
 the agent to learn at a highly rewarding behaviour.  
 
