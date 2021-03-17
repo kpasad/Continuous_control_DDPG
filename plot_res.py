@@ -9,15 +9,15 @@ import numpy as np
 basepath = r'C:\Users\kpasad\Dropbox\ML\project\deep-reinforcement-learning-master\Continuous_control_DDPG\OU_noise_sweep_opt_LR\\'
 all_pk = glob.glob(basepath+'*.pk')
 
-ma_length = 20
+ma_length = 100
 max_x=600
 for pk_file in all_pk:
     filename=pk_file.rsplit('\\')[-1]
     print(pk_file)
-    #pk_file=basepath+'Continuous_ctrl_17_43_46.pk'
+    #pk_file=basepath+'Continuous_ctrl_18_50_56.pk'
     #legend = filename.rsplit('.')[0]
     [scores,actor_loss,critic_loss, params] = pk.load(open(pk_file,'rb'))
-    legend = "LR:"+str(params.OU_noise_sigma)
+    legend = "OU_noise_sigma:"+str(params.OU_noise_sigma)
     #ma= np.convolve(scores, np.ones(ma_length), 'valid') / ma_length
     ma = np.convolve(scores[1:max_x], np.ones(ma_length), 'valid') / ma_length
     plt.plot(ma,label=legend)
