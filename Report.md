@@ -19,7 +19,7 @@ In response to the observed state, the agent can take an action to  move in four
 Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
 ## DDPG algorithm
-
+DDPG algorithm was proposed in [this](https://arxiv.org/pdf/1509.02971.pdf) paper.
 Q-Learning cannot be applied to continuous action space as the optimization of the action (argmax) is inefficient if not immposible. DDPG solves this problem by directly mapping the state to the optimal action. The mapping is a non linear function, that is typically implemented as a neural network.  Exploration is invoked by dithering the action with Ornstein-Uhlenbeck noise.
 
 DDPG is often bucketed in family of actor-critic algorithm.The actor implements a current policy to map the state to optimal action. The critic implemets the Q function estimation, and estimates the Action value given a state and an action. The actor is trained by the maximising the gradient of action value. Critic is trained by minimizing the MSE between predicted Q-value and meausured Q value (as a surrogate for true long term).
