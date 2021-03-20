@@ -42,10 +42,20 @@ The critic network concatenates the action estimated by the critic network with 
 Run the file continuous_control.py. The simulation will terminate when the agent gets a score of 30 over 100 episodes At the end of simulation, a pickle file is generated. The file contains a dump of parameters as the raw scores. The scores can be analyzed to create the plot below using the utility script plotres.py. The network weights are checkpointed as well.
 
 ## Performance
-The score trajectory over the episodes for the succesful agent is shown below.
-![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/final_scores.jpeg)
+The learning for the succesful agent is shown below.
+![Scores for succesful agent](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/final_scores_faster.jpeg)
 
-Succesful learning is defined as an average score of 30 over 100 episodes. For an OU noise variance of 0.07 agent learns after about 400 episodes. The scores improve until episode 500 and then vaccilate around a reducing average.
+The numerical values are shown below: 
+![Scores for succesful agent](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/Learning_screenshot.JPG)
+
+
+Succesful learning is defined as an average score of 30 over 100 episodes. For an OU noise variance of 0.1, the agent reaches the target score over the 100 episodes folowing the 224th episode episodes. 
+
+### Score trajectory
+The score for a longer trajectory and OU noise variance of 0.07 is shown below
+![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/final_scores_faster.jpeg)
+
+The scores improve until episode 500 and then vaccilate around a average score which itself diminishes. To quantify the long term variance, the learning must be simulated over multiple seeds.
 
 ### Sensitivity to Exploration model (Ornstein–Uhlenbeck noise):
 The action determined by Action network is perturbed by the Ornstein–Uhlenbeck noise. Training the networks required change to the noise model, to change from uniform random to normal distribution. The variance of the distribution dictates the amount of exploration that the agent performs. The agent is very sensitive to the the variance. See below:
