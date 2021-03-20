@@ -18,6 +18,14 @@ What do the element of the state indicate? No clear answers from Unity. The envi
 In response to the observed state, the agent can take an action to  move in four direction in 2-Dimensions space. 
 Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
+## DDPG algorithm
+
+Q-Learning cannot be applied to continuous action space as the optimization of the action (argmax) is inefficient if not immposible. DDPG solves this problem by directly mapping the state to the optimal action. The mapping is a non linear function, that is typically implemented as a neural network.  Exploration is invoked by dithering the action with Ornstein-Uhlenbeck noise.
+
+DDPG is often bucketed in family of actor-critic algorithm.The actor implements a current policy to map the state to optimal action. The critic implemets the Q function estimation, and estimates the Action value given a state and an action. The actor is trained by the maximising the gradient of action value. Critic is trained by minimizing the MSE between predicted Q-value and meausured Q value (as a surrogate for true long term).
+
+Experinces are stored in a replay buffer. 
+In order to encourage exploration during training, Ornstein-Uhlenbeck noise is added to the actors selected actions. 
 
 ## The Solution: DDPG
 The Unity environment enables 20 agents that can learn simultaneously. The DDPG solition is implemented with a single agent.
@@ -53,7 +61,7 @@ Succesful learning is defined as an average score of 30 over 100 episodes. For a
 
 ### Score trajectory
 The score for a longer trajectory and OU noise variance of 0.07 is shown below
-![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/final_scores_faster.jpeg)
+![Scores for various learning rate](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/final_scores.jpeg)
 
 The scores improve until episode 500 and then vaccilate around a average score which itself diminishes. To quantify the long term variance, the learning must be simulated over multiple seeds.
 
