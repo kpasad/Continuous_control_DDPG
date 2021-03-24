@@ -17,6 +17,8 @@ In this environment, a double-jointed arm can move to target locations. A reward
 
 The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
+The problem is solved when the agent receives an average reward of 30 over 100 episodes.
+
 See Report.md for detailed description
 
 ## Installation
@@ -32,6 +34,8 @@ See Report.md for detailed description
 	* Python 3.6 or greater
 	* pythorch 1.7.1
 	* Unity ML Agents, Banana Environment
+## Installing the Reacher Environment
+Please see the instruction [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/p2_continuous-control#getting-started)
 
 ## Running the code
 * Set the parameters in the params object in continuous_control.py
