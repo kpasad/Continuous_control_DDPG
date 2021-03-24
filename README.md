@@ -29,12 +29,16 @@ See Report.md for detailed description
 	2. Actor and Critic Modes : model.py
 	3. Simulator helper (paramsutility.py) ; A parameters manager utility
 	4. File plotres.py: A utility to plot the results from multiple runs of Navigation.py
-
 ## Requirements:
 	* Python 3.6 or greater
 	* pythorch 1.7.1
 	* Unity ML Agents, Banana Environment
-## Installing the Reacher Environment
+	
+## Step 1: Instantiating the Python environment and dependencies
+This installs all the required dependencies.
+Please see the instruction [ Udacity DRLND GitHub repository.](https://github.com/udacity/deep-reinforcement-learning#dependencies)
+
+## Step 2: Installing the Reacher Environment
 Please see the instruction [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/p2_continuous-control#getting-started)
 
 ## Running the code
