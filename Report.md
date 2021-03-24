@@ -46,7 +46,21 @@ The critic networks are:
 
 The critic network concatenates the action estimated by the critic network with a feature representation of the state instead of concatenating directly with the state. Critic learns faster on the feature representation instead of the raw state.
 
-Default parameters are stored in paramutils.py. 
+Key parametes are::
+|Parameter	|Value|
+|--|--|
+|replay buffer size|	int(1e6)|
+|minibatch size	|256|
+|discount factor	|0.99|
+|tau (soft update)|	1e-3|
+|learning rate actor|	1e-5|
+|learning rate critic|	1e-5|
+|L2 weight decay|	0|
+|UPDATE_EVERY	|20|
+|NUM_UPDATES	|10|
+|EPSILON	|1.0|
+|EPSILON_DECAY|	1e-6|
+|NOISE_SIGMA	|0.1|
 
 ## Running the simulation
 Run the file continuous_control.py. The simulation will terminate when the agent gets a score of 30 over 100 episodes At the end of simulation, a pickle file is generated. The file contains a dump of parameters as the raw scores. The scores can be analyzed to create the plot below using the utility script plotres.py. The network weights are checkpointed as well.
@@ -59,7 +73,7 @@ The numerical values are shown below:
 ![Scores for succesful agent](https://github.com/kpasad/Continuous_control_DDPG/blob/main/Results/Learning_screenshot.JPG)
 
 
-Succesful learning is defined as an average score of 30 over 100 episodes. For an OU noise variance of 0.1, the agent reaches the target score over the 100 episodes folowing the 224th episode episodes. 
+Succesful learning is defined as an average score of 30 over 100 episodes. For an OU noise variance of 0.1, the agent reaches the target score over the 100 episodes folowing the 324th episode episodes. 
 
 ### Score trajectory
 The score for a longer trajectory and OU noise variance of 0.07 is shown below
